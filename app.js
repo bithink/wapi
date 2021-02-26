@@ -127,6 +127,12 @@ const checkRegisteredNumber = async function(number) {
   return isRegistered;
 }
 
+app.get('/sendme', function(req, res){
+    req.body.number = req.param('number');
+    req.body.message = req.param('message');
+    next();
+});
+
 // Send message
 app.post('/send-message', [
   body('number').notEmpty(),
